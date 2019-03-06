@@ -91,6 +91,8 @@ class WebMapItem(Base):
     layer_transparency = db.Column(db.Float, nullable=True)
     layer_min_scale_denom = db.Column(db.Float, nullable=True)
     layer_max_scale_denom = db.Column(db.Float, nullable=True)
+    layer_min_date = db.Column(db.TIMESTAMP, nullable=True)
+    layer_max_date = db.Column(db.TIMESTAMP, nullable=True)
     layer_adapter = db.Column(db.Unicode, nullable=True)
     draw_order_position = db.Column(db.Integer, nullable=True)
 
@@ -134,6 +136,8 @@ class WebMapItem(Base):
                 layer_style_id=self.layer_style_id,
                 layer_min_scale_denom=self.layer_min_scale_denom,
                 layer_max_scale_denom=self.layer_max_scale_denom,
+                layer_min_date=self.layer_min_date,
+                layer_max_date=self.layer_max_date,
                 layer_adapter=self.layer_adapter,
                 draw_order_position=self.draw_order_position,
             )
@@ -150,7 +154,7 @@ class WebMapItem(Base):
         for a in ('display_name', 'group_expanded', 'layer_enabled',
                   'layer_adapter', 'layer_style_id', 'layer_transparency',
                   'layer_min_scale_denom', 'layer_max_scale_denom',
-                  'draw_order_position'):
+                  'layer_min_date', 'layer_max_date', 'draw_order_position'):
 
             if a in data:
                 setattr(self, a, data[a])

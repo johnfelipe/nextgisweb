@@ -3,10 +3,10 @@
 <%def name="title()"><% return unicode(obj) %></%def>
 
 <%def name="head()">
-    <% import json %>
+    <% from nextgisweb.geojson import dumps %>
 
     <script type="text/javascript">
-        var displayConfig = ${json.dumps(display_config, indent=4).replace('\n', '\n' + (8 * ' ')) | n};
+        var displayConfig = ${dumps(display_config, indent=4).replace('\n', '\n' + (8 * ' ')) | n};
 
         require([
             "dojo/parser", "dojo/ready", "ngw-webmap/Display"

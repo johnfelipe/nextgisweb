@@ -42,6 +42,8 @@ define([
     "./tool/Zoom",
     "./tool/Measure",
     "./tool/Identify",
+    "./tool/Swipe",
+    "./tool/TimeSlider",
     "ngw-webmap/FeatureHighlighter",
     //left panel
     "ngw-pyramid/navigation-menu/NavigationMenu",
@@ -51,7 +53,6 @@ define([
     "ngw-webmap/ui/BookmarkPanel/BookmarkPanel",
     "ngw-webmap/ui/SharePanel/SharePanel",
     "ngw-webmap/ui/InfoPanel/InfoPanel",
-    "./tool/Swipe",
     "ngw-webmap/MapStatesObserver",
     // utils
     "./utils/URL",
@@ -107,10 +108,9 @@ define([
     i18n,
     hbsI18n,
     MapToolbar,
-    InitialExtent, InfoScale, ToolBase, ToolZoom, ToolMeasure, Identify, FeatureHighlighter,
+    InitialExtent, InfoScale, ToolBase, ToolZoom, ToolMeasure, Identify, ToolSwipe, ToolTimeSlider, FeatureHighlighter,
     NavigationMenu,
     LayersPanel, PrintMapPanel, SearchPanel, BookmarkPanel, SharePanel, InfoPanel,
-    ToolSwipe,
     MapStatesObserver,
     URL,
     clientSettings,
@@ -868,6 +868,8 @@ define([
             this.mapToolbar.items.addTool(new ToolMeasure({display: this, type: "Polygon"}), 'measuringArea');
 
             this.mapToolbar.items.addTool(new ToolSwipe({display: this, orientation: "vertical"}), 'swipeVertical');
+
+            this.mapToolbar.items.addTool(new ToolTimeSlider({display: this}));
 
             this.identify = new Identify({display: this});
             var mapStates = MapStatesObserver.getInstance();

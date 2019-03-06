@@ -74,6 +74,8 @@ def setup_pyramid(comp, config):
                     transparency=item.layer_transparency,
                     minScaleDenom=item.layer_min_scale_denom,
                     maxScaleDenom=item.layer_max_scale_denom,
+                    minDate=item.layer_min_date,
+                    maxDate=item.layer_max_date,
                     drawOrderPosition=item.draw_order_position,
                 )
 

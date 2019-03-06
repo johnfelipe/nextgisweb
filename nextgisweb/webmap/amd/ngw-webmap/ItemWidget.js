@@ -48,6 +48,7 @@ define([
     "dijit/form/TextBox",
     "dijit/form/NumberTextBox",
     "dijit/form/Select",
+    "dijit/form/DateTextBox",
     "ngw-resource/Tree",
 
     //css
@@ -332,6 +333,8 @@ define([
                             "layer_transparency": null,
                             "layer_min_scale_denom": null,
                             "layer_max_scale_denom": null,
+                            "layer_min_date": null,
+                            "layer_max_date": null,
                             "layer_adapter": "image"
                         }, {
                             parent: widget.getAddParent(),
@@ -368,6 +371,8 @@ define([
                         widget.wLayerTransparency.set("value", widget.getItemValue("layer_transparency"));
                         widget.wLayerMinScale.set("value", widget.getItemValue("layer_min_scale_denom"));
                         widget.wLayerMaxScale.set("value", widget.getItemValue("layer_max_scale_denom"));
+                        widget.wLayerMinDate.set("value", widget.getItemValue("layer_min_date"));
+                        widget.wLayerMaxDate.set("value", widget.getItemValue("layer_max_date"));
                         widget.wLayerAdapter.set("value", widget.getItemValue("layer_adapter"));
                         widget.wLayerStyle.set("value", widget.getItemValue("layer_style_url"));
                     }
@@ -415,6 +420,14 @@ define([
                 widget.setItemValue("layer_max_scale_denom", newVal);
             });
 
+            this.wLayerMinDate.watch("value", function (attr, oldVal, newVal) {
+                widget.setItemValue("layer_min_date", newVal);
+            });
+
+            this.wLayerMaxDate.watch("value", function (attr, oldVal, newVal) {
+                widget.setItemValue("layer_max_date", newVal);
+            });
+
             this.wLayerAdapter.watch("value", function (attr, oldVal, newVal) {
                 widget.setItemValue("layer_adapter", newVal);
             });
@@ -460,6 +473,8 @@ define([
                     layer_transparency: store.getValue(itm, "layer_transparency"),
                     layer_min_scale_denom: store.getValue(itm, "layer_min_scale_denom"),
                     layer_max_scale_denom: store.getValue(itm, "layer_max_scale_denom"),
+                    layer_min_date: store.getValue(itm, "layer_min_date"),
+                    layer_max_date: store.getValue(itm, "layer_max_date"),
                     layer_adapter: store.getValue(itm, "layer_adapter"),
                     draw_order_position: store.getValue(itm, "draw_order_position"),
                     children: array.map(store.getValues(itm, "children"), function (i) { return traverse(i); })
